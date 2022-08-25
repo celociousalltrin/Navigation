@@ -1,0 +1,12 @@
+.Navigation {
+    background-color: black;
+}
+
+.Navigation > a{
+    margin-left: 10px;
+   text-decoration: none;
+   color: white;
+   font-size: large;
+   margin-top: 25px;
+   padding: 4px 8px;
+}
