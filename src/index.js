@@ -4,22 +4,24 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import {configureStore} from "@reduxjs/toolkit";
-import {Provider} from "react-redux";
-import UserReducers from "../src/feature/UserSlice";
+import { Provider } from 'react-redux';
+import userReducers from "../src/feature/UserSlice";
+import Tododreducers from "./feature/todoSlice";
 
-const store = configureStore({
+export const store = configureStore({
   reducer:{
-    userInfo:UserReducers
+    userInfo : userReducers,
+    todoInfo : Tododreducers,
   }
+
 })
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <Provider store = {store}>
+    <Provider store={store}>
     <App />
     </Provider>
-
   </React.StrictMode>
 );
 

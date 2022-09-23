@@ -1,5 +1,6 @@
-import {createSlice,createAsyncThunk} from "@reduxjs/toolkit";
+import {createSlice, createAsyncThunk} from "@reduxjs/toolkit";
 import axios from "axios";
+
 
 export const GetData = createAsyncThunk("user/GetData",async()=>{
     return axios.get("https://jsonplaceholder.typicode.com/users")
@@ -12,35 +13,34 @@ export const UserSlice = createSlice({
     initialState:{value:[]},
 
     reducers:{
-        adduser:(state,action)=>{
-        state.value.push(action.payload)
+        addUser:(state,action)=>{
+           state.value.push(action.payload)
         },
         updateUser:(state,action)=>{
             state.value.map((item)=>{
-                if(item.id==action.payload.id){
-                     item.username = action.payload.username
+                if(item.id === action.payload.id){
+                    item.name = action.payload.name
                 }
             })
         },
-        DeleteUser:(state,action)=>{
-            state.value = state.value.filter((item)=>
-                item.id != action.payload.id
-            )
-        }
+        deleteUser:(state,action)=>{
+            state.value = state.value.filter((item)=>{
+                return item.id !== action.payload.id;
+            })
+        },
     },
-
     extraReducers:{
         [GetData.pending]:()=>{
-            console.log("Pending")
+            console.log(`Pending`)
         },
         [GetData.fulfilled]:(state,action)=>{
-           return {...state,value:action.payload}
+            return {...state, value:action.payload}
         },
         [GetData.rejected]:()=>{
-            console.log("rejected")
+            console.log(`rejected`)
         }
     }
 })
 
 export default UserSlice.reducer;
-export const {adduser,updateUser,DeleteUser} = UserSlice.actions;
+export const {addUser, updateUser, deleteUser} = UserSlice.actions;

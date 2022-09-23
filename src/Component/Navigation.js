@@ -5,6 +5,9 @@ import Home from '../Pages/Home';
 import Setting from '../Pages/Setting';
 import Profile from '../Pages/Profile';
 import "./navigation.css";
+import Error from "../Pages/404";
+import Redx from '../Pages/redx';
+import Toredx from '../Pages/toredx';
 
 const Navigation = () => {
   return (
@@ -18,8 +21,9 @@ const Navigation = () => {
     <Routes>
         <Route path="/" element={<Login />} /> 
         <Route path="/Home" element={<Home />} /> 
-        <Route path="/Profile" element={<Profile/>} /> 
-        <Route path="/Setting" element={<Setting/>} /> 
+        <Route path="/Profile" element={<Toredx/>} /> 
+        <Route path="/Setting" element={<Redx/>} />
+        <Route path="*" element={<Error />} />
     </Routes>
 
     </div>
